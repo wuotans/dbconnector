@@ -1,0 +1,14 @@
+mysql-connector-python
+psycopg2
+cx_Oracle
+pyodbc
+typing-extensions
+click
+pymongo
+redis
+cassandra-driver
+elasticsearch
+aiomysql
+asyncpg
+aioredis
+aioelasticsearch
