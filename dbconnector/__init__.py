@@ -19,14 +19,15 @@ from .connectors import (
     AsyncRedisConnector,
     AsyncElasticsearchConnector,
     
-    # ORM e Utilitários
+    # ORM
     SQLModel,
     DatabaseModel,
-    ConnectionPool,
     
     # Exceções
     DatabaseConnectionError
 )
+
+from .utils import ConnectionPool  # Importação correta do ConnectionPool
 
 __all__ = [
     # Função principal
@@ -56,10 +57,10 @@ __all__ = [
     'DatabaseModel',
     
     # Utilitários
-    'ConnectionPool',
+    'ConnectionPool',  # Agora corretamente importado de utils.py
     
     # Exceções
     'DatabaseConnectionError'
 ]
 
-__version__ = '0.1.0'  # Atualize a versão conforme necessário
+__version__ = '0.2.0'  # Atualizado para 0.2.0 devido às novas funcionalidades
