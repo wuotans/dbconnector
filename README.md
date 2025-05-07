@@ -1,8 +1,8 @@
-# DBConnector
+# Easy MultiDB Connector
 
-[![PyPI version](https://badge.fury.io/py/dbconnector.svg)](https://badge.fury.io/py/dbconnector)
+[![PyPI version](https://img.shields.io/pypi/v/easy-multidb-connector.svg)](https://pypi.org/project/easy-multidb-connector/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python Versions](https://img.shields.io/pypi/pyversions/dbconnector.svg)](https://pypi.org/project/dbconnector/)
+[![Python Versions](https://img.shields.io/pypi/pyversions/easy-multidb-connector.svg)](https://pypi.org/project/easy-multidb-connector/)
 
 Um pacote Python completo para conexão com bancos de dados SQL e NoSQL, com suporte a operações assíncronas e ORM básico.
 
@@ -20,23 +20,23 @@ Um pacote Python completo para conexão com bancos de dados SQL e NoSQL, com sup
 
 Instalação básica:
 ```bash
-pip install dbconnector
+pip install easy-multidb-connector
 ```
 
 Instalação com suporte a bancos específicos:
 ```bash
-pip install dbconnector[sql]          # Bancos SQL
-pip install dbconnector[mongodb]      # MongoDB
-pip install dbconnector[elasticsearch] # Elasticsearch
-pip install dbconnector[async]        # Suporte assíncrono
-pip install dbconnector[all]          # Todos os recursos
+pip install easy-multidb-connector[sql]          # Bancos SQL
+pip install easy-multidb-connector[mongodb]      # MongoDB
+pip install easy-multidb-connector[elasticsearch] # Elasticsearch
+pip install easy-multidb-connector[async]        # Suporte assíncrono
+pip install easy-multidb-connector[all]          # Todos os recursos
 ```
 
 ## Uso Básico
 
 ### Conexão Simples
 ```python
-from dbconnector import connect
+from easy_multidb_connector import connect
 
 # SQL
 with connect('mysql', host='localhost', user='root', password='senha') as conn:
@@ -53,7 +53,7 @@ with connect('mongodb', host='localhost') as conn:
 ### Operações Assíncronas
 ```python
 import asyncio
-from dbconnector import connect
+from easy_multidb_connector import connect
 
 async def test_async():
     async with connect('postgresql', async_conn=True, 
@@ -66,7 +66,7 @@ asyncio.run(test_async())
 
 ### ORM Básico
 ```python
-from dbconnector import SQLModel, connect
+from easy_multidb_connector import SQLModel, connect
 
 class User(SQLModel):
     __fields__ = {
@@ -87,7 +87,7 @@ with connect('sqlite', database=':memory:') as conn:
 O pacote inclui uma CLI para testes rápidos:
 
 ```bash
-dbconnector-cli test --type mysql --host localhost --user root
+multidb-connect test --type mysql --host localhost --user root
 ```
 
 Opções disponíveis:

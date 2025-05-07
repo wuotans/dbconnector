@@ -1,10 +1,10 @@
-# Uso Avançado do DBConnector
+# Uso Avançado do Easy MultiDB Connector
 
 ## Connection Pooling
 
 ```python
-from dbconnector.utils import ConnectionPool
-from dbconnector import MySQLConnector
+from easy_multidb_connector.utils import ConnectionPool
+from easy_multidb_connector import MySQLConnector
 
 pool = ConnectionPool(
     MySQLConnector,
@@ -30,7 +30,7 @@ def close_db(exception):
 
 ### Cassandra
 ```python
-from dbconnector import connect
+from easy_multidb_connector import connect
 
 with connect('cassandra', hosts=['127.0.0.1']) as conn:
     conn.connection.execute(
@@ -46,7 +46,7 @@ with connect('cassandra', hosts=['127.0.0.1']) as conn:
 ### Elasticsearch (Assíncrono)
 ```python
 import asyncio
-from dbconnector import connect
+from easy_multidb_connector import connect
 
 async def search_products():
     async with connect('elasticsearch', async_conn=True) as conn:
@@ -62,7 +62,7 @@ asyncio.run(search_products())
 ## ORM Avançado
 
 ```python
-from dbconnector import SQLModel, connect
+from easy_multidb_connector import SQLModel, connect
 
 class Product(SQLModel):
     __tablename__ = 'products'
@@ -97,7 +97,7 @@ with connect('postgresql', database='ecommerce') as conn:
 ## Migrações Básicas
 
 ```python
-from dbconnector import connect
+from easy_multidb_connector import connect
 
 def migrate_v1_to_v2(connector):
     cursor = connector.connection.cursor()
@@ -118,6 +118,9 @@ with connect('sqlite', database='app.db') as conn:
 O pacote está totalmente tipado para melhor suporte em IDEs:
 
 ```python
+from typing import Dict, Any, Optional
+from easy_multidb_connector import BaseConnector
+
 def get_user(connector: BaseConnector, user_id: int) -> Optional[Dict[str, Any]]:
     """
     Obtém um usuário pelo ID
@@ -136,3 +139,4 @@ def get_user(connector: BaseConnector, user_id: int) -> Optional[Dict[str, Any]]
     cursor.execute("SELECT * FROM users WHERE id = %s", (user_id,))
     result = cursor.fetchone()
     return dict(result) if result else None
+```    
